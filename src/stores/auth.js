@@ -24,6 +24,7 @@ export const useAuthStore = defineStore("authStore", {
         console.log(data);
       }
     },
+    
     /******************* Login or Register user *******************/
     async authenticate(apiRoute, formData) {
       const res = await fetch(`/api/${apiRoute}`, {
@@ -43,6 +44,7 @@ export const useAuthStore = defineStore("authStore", {
         this.router.push({ name: "home" });
       }
     },
+
     /******************* Logout user *******************/
     async logout() {
       const res = await fetch("/api/logout", {
