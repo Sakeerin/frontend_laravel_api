@@ -15,7 +15,7 @@ const formData = reactive({
   password_confirmation: "",
 });
 
-// onMounted(() => (errors.value = {}));
+onMounted(() => (errors.value = {}));
 </script>
 
 <template>

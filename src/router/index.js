@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/Auth/RegisterView.vue'
 import LoginView from '../views/Auth/LoginView.vue'
+import CreateView from '../views/Posts/CreateView.vue'
 import { useAuthStore } from '../stores/auth.js'
 
 const router = createRouter({
@@ -23,6 +24,12 @@ const router = createRouter({
       name: 'login',
       component: LoginView,
       meta: { quest: true }
+    },
+    {
+      path: '/create',
+      name: 'create',
+      component: CreateView,
+      meta: { auth: true }
     }
   ]
 })
@@ -30,12 +37,13 @@ const router = createRouter({
 router.beforeEach( async(to, from) => {
   const authStore = useAuthStore()
   await authStore.getUser()
+  
   if (authStore.user && to.meta.quest) {
     return { name: 'home' };
   }
-  // if (!to.meta.quest && !isAuthenticated) {
-  //   return { name: 'login' };
-  // }
+  if (!authStore.user && to.meta.auth) {
+    return { name: 'login' };
+  }
 })
 
 export default router
