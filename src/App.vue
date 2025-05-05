@@ -18,8 +18,8 @@ onMounted(() => {
         <p v-if="authStore.user" class="text-white">{{ authStore.user.name }}</p>
 
         <div>
-          <!-- <RouterLink to="/login" class="nav-link">Login</RouterLink> -->
           <RouterLink :to="{name: 'register'}" class="nav-link">Register</RouterLink>
+          <RouterLink :to="{name: 'login'}" class="nav-link">Login</RouterLink>
         </div>
       </nav>
   </header>
