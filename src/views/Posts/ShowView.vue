@@ -36,11 +36,11 @@ onMounted(async () => (post.value = await getPost(route.params.id)));
             </button>
           </form>
 
-          <!-- <RouterLink
+          <RouterLink
             :to="{ name: 'update', params: { id: post.id } }"
             class="text-green-500 font-bold px-2 py-1 border border-green-300"
             >Update</RouterLink
-          > -->
+          >
         </div>
       </div>
     </div>

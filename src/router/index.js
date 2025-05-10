@@ -4,6 +4,7 @@ import RegisterView from '../views/Auth/RegisterView.vue'
 import LoginView from '../views/Auth/LoginView.vue'
 import CreateView from '../views/Posts/CreateView.vue'
 import ShowView from '../views/Posts/ShowView.vue'
+import UpdateView from '../views/Posts/UpdateView.vue'
 import { useAuthStore } from '../stores/auth.js'
 
 const router = createRouter({
@@ -36,6 +37,12 @@ const router = createRouter({
       path: '/posts/:id',
       name: 'show',
       component: ShowView
+    },
+    {
+      path: '/posts/update/:id',
+      name: 'update',
+      component: UpdateView,
+      meta: { auth: true }
     }
   ]
 })
