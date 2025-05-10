@@ -1,9 +1,10 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { useAuthStore } from './stores/auth'
-import { onMounted } from 'vue';
+// import { onMounted } from 'vue';
 
 const authStore = useAuthStore();
+// console.log(authStore);
 
 // onMounted(() => {
 //   authStore.getUser();

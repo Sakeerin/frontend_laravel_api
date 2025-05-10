@@ -1,10 +1,10 @@
 <script setup>
-// import { usePostsStore } from "../../stores/posts";
+import { usePostsStore } from "../../stores/posts";
 import { storeToRefs } from "pinia";
 import { reactive } from "vue";
 
-// const { errors } = storeToRefs(usePostsStore());
-// const { createPost } = usePostsStore();
+const { errors } = storeToRefs(usePostsStore());
+const { createPost } = usePostsStore();
 
 const formData = reactive({
   title: "",
