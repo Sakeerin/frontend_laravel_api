@@ -9,19 +9,20 @@ export const usePostsStore = defineStore("postsStore", {
   },
   actions: {
     /******************* Get all posts *******************/
-    // async getAllPosts() {
-    //   const res = await fetch("/api/posts");
-    //   const data = await res.json();
-
-    //   return data;
-    // },
+    async getAllPosts() {
+      const res = await fetch("/api/posts");
+      const data = await res.json();
+    //   console.log(data);
+      return data;
+    },
     /******************* Get a post *******************/
-    // async getPost(post) {
-    //   const res = await fetch(`/api/posts/${post}`);
-    //   const data = await res.json();
+    async getPost(post) {
+      const res = await fetch(`/api/posts/${post}`);
+      const data = await res.json();
 
-    //   return data.post;
-    // },
+    //   console.log(data);
+      return data.post;
+    },
     /******************* Create a post *******************/
     async createPost(formData) {
       const res = await fetch("/api/posts", {
@@ -33,9 +34,7 @@ export const usePostsStore = defineStore("postsStore", {
       });
 
       const data = await res.json();
-      console.log(data);
       
-
       if (data.errors) {
         this.errors = data.errors;
       } else {
@@ -44,23 +43,23 @@ export const usePostsStore = defineStore("postsStore", {
       }
     },
     /******************* Delete a post *******************/
-    // async deletePost(post) {
-    //   const authStore = useAuthStore();
-    //   if (authStore.user.id === post.user_id) {
-    //     const res = await fetch(`/api/posts/${post.id}`, {
-    //       method: "delete",
-    //       headers: {
-    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //       },
-    //     });
+    async deletePost(post) {
+      const authStore = useAuthStore();
+      if (authStore.user.id === post.user_id) {
+        const res = await fetch(`/api/posts/${post.id}`, {
+          method: "delete",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
-    //     const data = await res.json();
-    //     if (res.ok) {
-    //       this.router.push({ name: "home" });
-    //     }
-    //     console.log(data);
-    //   }
-    // },
+        const data = await res.json();
+        if (res.ok) {
+          this.router.push({ name: "home" });
+        }
+        console.log(data);
+      }
+    },
     /******************* Update a post *******************/
     // async updatePost(post, formData) {
     //   const authStore = useAuthStore();
